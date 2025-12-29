@@ -18,7 +18,7 @@ export const MOCK_PROFILES: Record<string, Profile> = {
       {
         id: "h1",
         type: "heading",
-        size: "full",
+        size: "full-sm",
         data: {
           title: "Our Menus",
           subtitle: "Freshly brewed and baked every day",
@@ -48,7 +48,7 @@ export const MOCK_PROFILES: Record<string, Profile> = {
       {
         id: "h2",
         type: "heading",
-        size: "full",
+        size: "full-sm",
         data: {
           title: "Connect & Find Us",
         },

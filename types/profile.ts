@@ -1,5 +1,5 @@
 export type WidgetType = 'profile' | 'link' | 'menu' | 'gallery' | 'map' | 'heading';
-export type WidgetSize = '1x1' | '2x1' | '2x2' | 'full';
+export type WidgetSize = '1x1' | '2x1' | '2x2' | 'full' | 'full-sm';
 
 export interface BaseWidget {
   id: string;
