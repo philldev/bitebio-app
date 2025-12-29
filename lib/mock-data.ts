@@ -12,7 +12,7 @@ export const MOCK_PROFILES: Record<string, Profile> = {
         data: {
           name: "Cool Beans Cafe",
           bio: "Specialty coffee, handmade pastries, and a cozy atmosphere in the heart of the city.",
-          avatarUrl: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=400&fit=crop",
+          avatarUrl: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=400&q=80",
         },
       },
       {
@@ -32,7 +32,7 @@ export const MOCK_PROFILES: Record<string, Profile> = {
           name: "Signature Latte",
           price: "$5.50",
           description: "Double shot with oat milk",
-          imageUrl: "https://images.unsplash.com/photo-1541167760496-162955ed8a9f?w=400&h=400&fit=crop",
+          imageUrl: "https://images.unsplash.com/photo-1595434091143-b375ced5fe5c?auto=format&fit=crop&w=400&q=80",
         },
       },
       {
@@ -42,7 +42,7 @@ export const MOCK_PROFILES: Record<string, Profile> = {
         data: {
           name: "Almond Croissant",
           price: "$4.25",
-          imageUrl: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=400&h=400&fit=crop",
+          imageUrl: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=400&q=80",
         },
       },
       {
@@ -95,7 +95,7 @@ export const MOCK_PROFILES: Record<string, Profile> = {
         data: {
           name: "The Burger Joint",
           bio: "Voted best burgers in town 3 years in a row. No frills, just flame-grilled perfection.",
-          avatarUrl: "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400&h=400&fit=crop",
+          avatarUrl: "https://images.unsplash.com/photo-1561758033-d8f3c665b6b6?auto=format&fit=crop&w=400&q=80",
         },
       },
       {
@@ -106,7 +106,7 @@ export const MOCK_PROFILES: Record<string, Profile> = {
           name: "The Ultimate Cheeseburger",
           price: "$12.99",
           description: "Double patty, secret sauce, and extra cheddar.",
-          imageUrl: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=600&fit=crop",
+          imageUrl: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80",
         },
       },
       {
@@ -125,8 +125,8 @@ export const MOCK_PROFILES: Record<string, Profile> = {
         size: "2x1",
         data: {
           images: [
-            { url: "https://images.unsplash.com/photo-1550547660-d9450f859349?w=300&h=300&fit=crop" },
-            { url: "https://images.unsplash.com/photo-1594212699903-ec8a3ecc50f1?w=300&h=300&fit=crop" },
+            { url: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80" },
+            { url: "https://images.unsplash.com/photo-1594212699903-ec8a3ecc50f1?auto=format&fit=crop&w=400&q=80" },
           ],
         },
       },
