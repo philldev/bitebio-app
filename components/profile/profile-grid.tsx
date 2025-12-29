@@ -10,7 +10,7 @@ const sizeVariants: Record<WidgetSize, string> = {
   "1x1": "col-span-1 row-span-1",
   "2x1": "col-span-2 row-span-1",
   "2x2": "col-span-2 row-span-2",
-  "full": "col-span-full",
+  full: "col-span-full",
 };
 
 export function ProfileGrid({ widgets, renderWidget }: ProfileGridProps) {
@@ -20,8 +20,8 @@ export function ProfileGrid({ widgets, renderWidget }: ProfileGridProps) {
         <div
           key={widget.id}
           className={cn(
-            "relative overflow-hidden transition-all duration-300",
-            sizeVariants[widget.size] || "col-span-1"
+            "relative transition-all duration-300",
+            sizeVariants[widget.size] || "col-span-1",
           )}
         >
           {renderWidget(widget)}
