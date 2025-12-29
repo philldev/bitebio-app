@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { Menu01Icon, LinkSquare02Icon, Image01Icon } from "@hugeicons/core-free-icons";
+import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
 
 export default function LandingPage() {
   return (
@@ -19,17 +19,19 @@ export default function LandingPage() {
               Showcase your menu, links, and vibe in one beautiful link-in-bio.
               Designed for the modern food & beverage industry.
             </p>
-            <div className="w-full max-w-sm space-y-2">
-              <form className="flex space-x-2">
-                <div className="flex-1 relative">
-                    <span className="absolute left-3 top-2.5 text-muted-foreground text-sm">bitebio.app/</span>
-                    <Input 
-                        className="pl-24" 
+            <div className="w-full max-w-sm space-y-4">
+              <form className="flex flex-col sm:flex-row gap-2">
+                <InputGroup className="h-11">
+                    <InputGroupAddon align="inline-start">
+                        bitebio.app/
+                    </InputGroupAddon>
+                    <InputGroupInput 
                         placeholder="your-cafe" 
                         type="text" 
+                        className="h-full"
                     />
-                </div>
-                <Button asChild type="submit">
+                </InputGroup>
+                <Button asChild type="submit" size="lg" className="h-11">
                     <Link href="/onboard">Claim</Link>
                 </Button>
               </form>
