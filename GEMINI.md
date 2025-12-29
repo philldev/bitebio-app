@@ -15,7 +15,7 @@ The app is designed to be visually similar to [bento.me](https://bento.me), prov
 
 ## Roadmap & Progress
 We are following a phased approach to build the MVP.
-- **Current Phase:** Phase 1 (Foundation & Static Pages)
+- **Current Phase:** Phase 3 (Onboarding Simulation)
 - **Detailed Roadmap:** [MVP Roadmap](roadmap/01-mvp-roadmap.md)
 
 ## Tech Stack

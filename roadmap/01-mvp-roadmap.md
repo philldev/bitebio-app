@@ -16,20 +16,20 @@ This roadmap focuses on building the core UI/UX and frontend logic without a bac
 
 ## Phase 2: Public Profile Page (The Core)
 **Goal:** Create the "Bento-style" profile view.
-- [ ] **Dynamic Route (`/[username]`)**
+- [x] **Dynamic Route (`/[username]`)**
   - Create the page structure to handle dynamic slugs (e.g., `/cool-beans-cafe`).
-- [ ] **Mock Data Structure**
+- [x] **Mock Data Structure**
   - Define a TypeScript interface for a `Profile` (Bio, Links, Menu Items, Photos).
   - Create a mock data store (a file with JSON data for 2-3 example cafes).
-- [ ] **Bento Grid Layout**
+- [x] **Bento Grid Layout**
   - Implement a fixed, responsive CSS grid.
   - **Widgets/Cards:**
-    - **Profile Card:** Avatar, Name, Bio.
-    - **Link Card:** Button style links (Instagram, Website, UberEats).
-    - **Menu Highlight Card:** Featured item with price and image.
-    - **Map Card:** Static map placeholder or simple embed.
-    - **Gallery Card:** Grid of 2-4 images.
-- [ ] **Responsiveness**
+    - [x] **Profile Card:** Avatar, Name, Bio.
+    - [x] **Link Card:** Button style links (Instagram, Website, UberEats).
+    - [x] **Menu Highlight Card:** Featured item with price and image.
+    - [x] **Map Card:** Static map placeholder or simple embed.
+    - [x] **Gallery Card:** Grid of 2-4 images.
+- [x] **Responsiveness**
   - Ensure the grid collapses gracefully to a single column on mobile.
 
 ## Phase 3: Onboarding Simulation
