@@ -62,7 +62,7 @@ The project follows the Shadcn "Maia" design style.
 - Follow the App Router conventions for data fetching and routing.
 - Keep the UI consistent with the "radix-maia" style defined in `components.json`.
 - **Git Commits:** **NEVER** commit changes to the repository unless explicitly requested by the user. When requested, always propose a draft commit message first.
-- **Planning:** When asked to create a plan, you MUST create a detailed plan file in the `plans/` folder (e.g., `plans/XXX-feature-name.md`) BEFORE starting any implementation.
+- **Planning:** When asked to create a plan, you MUST create a detailed plan file in the `plans/` folder (e.g., `plans/XXX-feature-name.md`) BEFORE starting any implementation. **NEVER** execute a plan when we are still in drafting mode. You execute the plan ONLY when requested to do so by the user.
 
 
 ## Project Structure
