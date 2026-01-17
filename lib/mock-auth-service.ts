@@ -80,6 +80,31 @@ export const MockAuthService = {
     return user;
   },
 
+  async signup(name: string, email: string, password: string): Promise<User> {
+    await this.delay(700);
+
+    const users = this.get<User[]>(STORAGE_KEYS.USERS) || [];
+    
+    if (users.some(u => u.email === email)) {
+      throw new Error("Email already exists");
+    }
+
+    const newUser: User = {
+      id: `user_${generateId()}`,
+      email,
+      name,
+      password, // Plain text for mock
+      avatarUrl: `https://api.dicebear.com/7.x/avataaars/svg?seed=${name}`, // Random avatar
+    };
+
+    users.push(newUser);
+    localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(users));
+
+    // Auto-login after signup
+    localStorage.setItem(STORAGE_KEYS.SESSION, newUser.id);
+    return newUser;
+  },
+
   async logout(): Promise<void> {
     await this.delay(200);
     localStorage.removeItem(STORAGE_KEYS.SESSION);

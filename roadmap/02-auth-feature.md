@@ -45,13 +45,13 @@ This roadmap outlines the implementation of a **simulated** authentication syste
 ## Phase 3: Auth UI Pages
 **Goal:** Functional (mock) login and signup screens.
 
-- [ ] **`/login` Page**:
+- [x] **`/login` Page**:
     -   Email/Password form.
     -   Hardcoded "Demo Accounts" help text (e.g., "Use admin@demo.com / password").
-- [ ] **`/signup` Page**:
+- [x] **`/signup` Page**:
     -   Create a new mock user.
     -   Redirect to Onboarding or Dashboard.
-- [ ] **Logout Functionality**:
+- [x] **Logout Functionality**:
     -   Button in the dashboard/navbar to clear session.
 
 ---
