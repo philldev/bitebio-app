@@ -34,16 +34,16 @@ This roadmap focuses on building the core UI/UX and frontend logic without a bac
 
 ## Phase 3: Onboarding Simulation
 **Goal:** Simulate the user signup flow.
-- [ ] **Onboarding Route (`/onboard`)**
+- [x] **Onboarding Route (`/onboard`)**
   - Multi-step form experience (using client-side state).
-- [ ] **Step 1: Claim Link**
+- [x] **Step 1: Claim Link**
   - Input username (slug).
   - Simulate "Checking availability..." -> Success.
-- [ ] **Step 2: Basic Info**
+- [x] **Step 2: Basic Info**
   - Cafe Name, Bio, Primary Color (if applicable).
-- [ ] **Step 3: Preview**
+- [x] **Step 3: Preview**
   - Show a generated preview of their profile based on the inputs.
-- [ ] **Success State**
+- [x] **Success State**
   - "Your profile is ready!" screen (simulating a completed signup).
 
 ## Phase 4: Polish & Refinement
