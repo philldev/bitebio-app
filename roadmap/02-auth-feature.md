@@ -59,10 +59,10 @@ This roadmap outlines the implementation of a **simulated** authentication syste
 ## Phase 4: Multi-Tenancy Dashboard
 **Goal:** Manage multiple businesses.
 
-- [ ] **Dashboard Layout**:
+- [x] **Dashboard Layout**:
     -   **Business Switcher:** A dropdown in the sidebar/nav to switch between businesses the user belongs to.
     -   **Business Context:** Global state for `activeBusiness`.
-- [ ] **Update Onboarding (`/onboard`)**:
+- [x] **Update Onboarding (`/onboard`)**:
     -   Instead of just "success", actually "create" the mock Business and Membership for the currently logged-in user.
 
 ---

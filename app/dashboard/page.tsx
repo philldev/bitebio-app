@@ -1,49 +1,57 @@
 "use client";
 
-import { useAuth } from "@/components/auth/auth-provider";
-import { AuthGuard } from "@/components/auth/auth-guard";
+import { useBusiness } from "@/components/auth/business-context";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { HugeiconsIcon } from "@hugeicons/react";
-import { Logout01Icon, UserCircleIcon } from "@hugeicons/core-free-icons";
+import { ArrowRight01Icon, Store01Icon } from "@hugeicons/core-free-icons";
+import Link from "next/link";
 
 export default function DashboardPage() {
-  const { user, logout } = useAuth();
+  const { activeBusiness, isLoading } = useBusiness();
+
+  if (isLoading) {
+    return <div>Loading business info...</div>;
+  }
+
+  if (!activeBusiness) {
+    return (
+        <div className="flex flex-col items-center justify-center h-[50vh] space-y-4">
+            <h2 className="text-2xl font-bold">No Business Selected</h2>
+            <p className="text-muted-foreground">Create a new business to get started.</p>
+            <Button asChild>
+                <Link href="/onboard">Create Business</Link>
+            </Button>
+        </div>
+    )
+  }
 
   return (
-    <AuthGuard>
-      <div className="min-h-screen bg-background">
-        <header className="border-b">
-          <div className="container mx-auto flex h-16 items-center justify-between px-4">
-            <h1 className="text-xl font-bold">Dashboard</h1>
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2">
-                 {user?.avatarUrl ? (
-                    <img src={user.avatarUrl} alt={user.name} className="h-8 w-8 rounded-full" />
-                 ) : (
-                    <HugeiconsIcon icon={UserCircleIcon} className="h-8 w-8" />
-                 )}
-                 <span className="text-sm font-medium hidden md:inline-block">{user?.name}</span>
-              </div>
-              <Button variant="outline" size="sm" onClick={() => logout()}>
-                <HugeiconsIcon icon={Logout01Icon} className="mr-2 h-4 w-4" />
-                Logout
-              </Button>
-            </div>
-          </div>
-        </header>
-
-        <main className="container mx-auto p-8">
-          <div className="rounded-lg border bg-card p-8 text-center shadow-sm">
-            <h2 className="text-2xl font-bold mb-4">Welcome back, {user?.name}!</h2>
-            <p className="text-muted-foreground mb-6">
-              This is your dashboard placeholder. In the next phase, you will manage your businesses here.
-            </p>
-            <div className="inline-block bg-muted px-4 py-2 rounded text-sm font-mono">
-                User ID: {user?.id}
-            </div>
-          </div>
-        </main>
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
+        <Button asChild>
+            <Link href={`/${activeBusiness.slug}`} target="_blank">
+                View Live Page <HugeiconsIcon icon={ArrowRight01Icon} className="ml-2 h-4 w-4" />
+            </Link>
+        </Button>
       </div>
-    </AuthGuard>
+
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Business Name</CardTitle>
+            <HugeiconsIcon icon={Store01Icon} className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{activeBusiness.name}</div>
+            <p className="text-xs text-muted-foreground">
+              @{activeBusiness.slug}
+            </p>
+          </CardContent>
+        </Card>
+        {/* Add more stats cards here later */}
+      </div>
+    </div>
   );
 }
