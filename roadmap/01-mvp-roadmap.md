@@ -49,10 +49,13 @@ This roadmap focuses on building the core UI/UX and frontend logic without a bac
 ## Phase 4: Auth & User Management (Mock)
 **Goal:** Build the User Dashboard and dynamic editing capabilities.
 - **Detailed Roadmap:** [Auth & User Mgmt Roadmap](02-auth-user-mgmt-mock.md)
-- [ ] **Auth Context:** Fake login/logout logic.
-- [ ] **Dashboard:** Private CMS to edit profile data.
-- [ ] **CRUD Operations:** Edit Links, Menu, and Gallery.
-- [ ] **Local Persistence:** Save changes to browser storage so they appear on the public profile.
+- [x] **Auth Context:** Fake login/logout logic.
+- [x] **Dashboard:** Private CMS to edit profile data.
+- [x] **Local Persistence:** Save changes to browser storage so they appear on the public profile.
+- [ ] **Advanced CRUD:**
+  - [x] List, Delete, and Reorder widgets.
+  - [ ] Add new widgets (Link, Menu Item, Gallery).
+  - [ ] Edit existing widget content.
 
 ## Phase 5: Polish & Refinement
 **Goal:** Ensure the "Maia" aesthetic and high-quality feel.
