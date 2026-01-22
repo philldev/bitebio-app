@@ -9,17 +9,17 @@ import { MapWidget } from "./widgets/map-widget";
 export function WidgetFactory({ widget }: { widget: Widget }) {
   switch (widget.type) {
     case "profile":
-      return <ProfileWidget data={widget.data} />;
+      return <ProfileWidget data={widget.data} size={widget.size} />;
     case "heading":
-      return <HeadingWidget data={widget.data} />;
+      return <HeadingWidget data={widget.data} size={widget.size} />;
     case "link":
-      return <LinkWidget data={widget.data} />;
+      return <LinkWidget data={widget.data} size={widget.size} />;
     case "menu":
-      return <MenuWidget data={widget.data} />;
+      return <MenuWidget data={widget.data} size={widget.size} />;
     case "gallery":
-      return <GalleryWidget data={widget.data} />;
+      return <GalleryWidget data={widget.data} size={widget.size} />;
     case "map":
-      return <MapWidget data={widget.data} />;
+      return <MapWidget data={widget.data} size={widget.size} />;
     default:
       return null;
   }
