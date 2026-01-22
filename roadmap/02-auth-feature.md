@@ -33,11 +33,11 @@ This roadmap outlines the implementation of a **simulated** authentication syste
 ## Phase 2: Auth Context & State
 **Goal:** Global state management for the active user.
 
-- [x] **`AuthProvider` Context**:
+- [ ] **`AuthProvider` Context**:
     -   State: `user` | `null`, `isLoading`.
     -   Methods: `login`, `signup`, `logout`.
     -   Behavior: On mount, check `localStorage` for a fake session token and restore the user.
-- [x] **Protected Routes**:
+- [ ] **Protected Routes**:
     -   A wrapper component (e.g., `<RequireAuth>`) that redirects to `/login` if `user` is null.
 
 ---
