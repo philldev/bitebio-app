@@ -9,6 +9,7 @@ import { MenuWidgetForm } from "./forms/menu-widget-form";
 import { HeadingWidgetForm } from "./forms/heading-widget-form";
 import { GalleryWidgetForm } from "./forms/gallery-widget-form";
 import { MapWidgetForm } from "./forms/map-widget-form";
+import { ProfileWidgetForm } from "./forms/profile-widget-form";
 
 interface WidgetEditorDialogProps {
   isOpen: boolean;
@@ -76,6 +77,8 @@ export function WidgetEditorDialog({
 
   const renderForm = () => {
     switch (selectedType) {
+      case "profile":
+        return <ProfileWidgetForm initialData={initialWidget?.type === 'profile' ? initialWidget.data : undefined} onSubmit={handleFormSubmit} onCancel={() => onOpenChange(false)} />;
       case "link":
         return <LinkWidgetForm initialData={initialWidget?.type === 'link' ? initialWidget.data : undefined} onSubmit={handleFormSubmit} onCancel={() => onOpenChange(false)} />;
       case "menu":

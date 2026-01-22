@@ -7,7 +7,8 @@ import {
   Link01Icon, 
   LibraryIcon, 
   Image01Icon, 
-  ViewIcon 
+  ViewIcon,
+  UserCircleIcon
 } from "@hugeicons/core-free-icons";
 
 interface WidgetTypeSelectorProps {
@@ -16,6 +17,12 @@ interface WidgetTypeSelectorProps {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const WIDGET_TYPES: { type: WidgetType; label: string; icon: any; description: string }[] = [
+  {
+    type: "profile",
+    label: "Profile Info",
+    icon: UserCircleIcon,
+    description: "Display your cafe's name, bio, and avatar.",
+  },
   {
     type: "link",
     label: "Link",
