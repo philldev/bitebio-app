@@ -17,12 +17,12 @@ This roadmap outlines the implementation of a **simulated** authentication syste
 ## Phase 1: Mock Data Architecture
 **Goal:** Define the data structures and a "Service" layer to interact with them.
 
-- [x] **Data Interfaces (`types/auth.ts`)**:
+- [ ] **Data Interfaces (`types/auth.ts`)**:
     -   `User`: `{ id, email, name, avatarUrl }`
     -   `Business`: `{ id, slug, name, ...profileData }`
     -   `Role`: `'owner' | 'admin' | 'editor'`
     -   `Membership`: `{ userId, businessId, role }`
-- [x] **Mock Service (`lib/mock-auth-service.ts`)**:
+- [ ] **Mock Service (`lib/mock-auth-service.ts`)**:
     -   `getUsers()` / `createUser()`
     -   `getBusinessesForUser(userId)`
     -   `login(email, password)` (Simulated check)
