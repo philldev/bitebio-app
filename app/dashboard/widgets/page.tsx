@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "@/lib/auth-context";
 import { storage } from "@/lib/storage";
-import { Profile, LinkWidgetData, MenuWidgetData, ProfileWidgetData, HeadingWidgetData, GalleryWidgetData } from "@/types/profile";
+import { Profile, Widget, LinkWidgetData, MenuWidgetData, ProfileWidgetData, HeadingWidgetData, GalleryWidgetData } from "@/types/profile";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { HugeiconsIcon } from "@hugeicons/react";
@@ -20,11 +20,15 @@ import {
   ViewIcon
 } from "@hugeicons/core-free-icons";
 import { Badge } from "@/components/ui/badge";
+import { WidgetEditorDialog } from "@/components/dashboard/widgets/widget-editor-dialog";
 
 export default function WidgetsPage() {
   const { user } = useAuth();
   const [profile, setProfile] = useState<Profile | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [dialogMode, setDialogMode] = useState<"add" | "edit">("add");
+  const [editingWidget, setEditingWidget] = useState<Widget | null>(null);
 
   useEffect(() => {
     if (user?.username) {
@@ -60,6 +64,35 @@ export default function WidgetsPage() {
     }
   };
 
+  const handleAddWidget = () => {
+    setDialogMode("add");
+    setEditingWidget(null);
+    setIsDialogOpen(true);
+  };
+
+  const handleEditWidget = (widget: Widget) => {
+    setDialogMode("edit");
+    setEditingWidget(widget);
+    setIsDialogOpen(true);
+  };
+
+  const handleSaveWidget = (widget: Widget) => {
+    if (!profile) return;
+
+    const newWidgets = [...profile.widgets];
+
+    if (dialogMode === "add") {
+      newWidgets.push(widget);
+    } else {
+      const index = newWidgets.findIndex(w => w.id === widget.id);
+      if (index !== -1) {
+        newWidgets[index] = widget;
+      }
+    }
+
+    save({ ...profile, widgets: newWidgets });
+  };
+
   if (isLoading || !profile) {
     return <div className="animate-pulse space-y-4">
       <div className="h-8 bg-muted rounded w-1/4"></div>
@@ -76,7 +109,7 @@ export default function WidgetsPage() {
             Add, remove, and reorder elements on your profile.
           </p>
         </div>
-        <Button className="gap-2">
+        <Button className="gap-2" onClick={handleAddWidget}>
           <HugeiconsIcon icon={PlusSignIcon} size={18} />
           Add Widget
         </Button>
@@ -143,7 +176,12 @@ export default function WidgetsPage() {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <Button variant="ghost" size="icon" className="text-muted-foreground">
+                  <Button 
+                    variant="ghost" 
+                    size="icon" 
+                    className="text-muted-foreground"
+                    onClick={() => handleEditWidget(widget)}
+                  >
                     <HugeiconsIcon icon={PencilEdit01Icon} size={18} />
                   </Button>
                   {widget.type !== 'profile' && (
@@ -162,6 +200,14 @@ export default function WidgetsPage() {
           );
         })}
       </div>
+
+      <WidgetEditorDialog
+        isOpen={isDialogOpen}
+        onOpenChange={setIsDialogOpen}
+        mode={dialogMode}
+        initialWidget={editingWidget}
+        onSave={handleSaveWidget}
+      />
     </div>
   );
 }

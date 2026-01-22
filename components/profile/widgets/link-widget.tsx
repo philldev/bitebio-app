@@ -7,6 +7,7 @@ import { ArrowUpRight01Icon } from "@hugeicons/core-free-icons";
 
 export function LinkWidget({ data }: { data: LinkWidgetData["data"] }) {
   // Dynamically get icon from Hugeicons
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const IconData = data.icon && (Icons as any)[data.icon];
 
   return (
