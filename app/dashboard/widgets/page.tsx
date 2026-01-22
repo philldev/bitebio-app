@@ -6,8 +6,9 @@ import { storage } from "@/lib/storage";
 import { Profile, LinkWidgetData, MenuWidgetData, ProfileWidgetData, HeadingWidgetData, GalleryWidgetData } from "@/types/profile";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { HugeiconsIcon } from "@hugeicons/react";
 import { 
-  Plus03Icon, 
+  PlusSignIcon, 
   Link01Icon, 
   LibraryIcon, 
   Image01Icon,
@@ -17,7 +18,7 @@ import {
   ArrowDown01Icon,
   UserCircleIcon,
   ViewIcon
-} from "@hugeicons/react";
+} from "@hugeicons/core-free-icons";
 import { Badge } from "@/components/ui/badge";
 
 export default function WidgetsPage() {
@@ -76,7 +77,7 @@ export default function WidgetsPage() {
           </p>
         </div>
         <Button className="gap-2">
-          <Plus03Icon size={18} />
+          <HugeiconsIcon icon={PlusSignIcon} size={18} />
           Add Widget
         </Button>
       </div>
@@ -97,7 +98,7 @@ export default function WidgetsPage() {
                     disabled={isFirst}
                     onClick={() => moveWidget(widget.id, 'up')}
                   >
-                    <ArrowUp01Icon size={16} />
+                    <HugeiconsIcon icon={ArrowUp01Icon} size={16} />
                   </Button>
                   <Button 
                     variant="ghost" 
@@ -106,17 +107,17 @@ export default function WidgetsPage() {
                     disabled={isLast}
                     onClick={() => moveWidget(widget.id, 'down')}
                   >
-                    <ArrowDown01Icon size={16} />
+                    <HugeiconsIcon icon={ArrowDown01Icon} size={16} />
                   </Button>
                 </div>
 
                 <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center text-muted-foreground shrink-0">
-                  {widget.type === 'profile' && <UserCircleIcon size={24} />}
-                  {widget.type === 'link' && <Link01Icon size={24} />}
-                  {widget.type === 'menu' && <LibraryIcon size={24} />}
-                  {widget.type === 'gallery' && <Image01Icon size={24} />}
+                  {widget.type === 'profile' && <HugeiconsIcon icon={UserCircleIcon} size={24} />}
+                  {widget.type === 'link' && <HugeiconsIcon icon={Link01Icon} size={24} />}
+                  {widget.type === 'menu' && <HugeiconsIcon icon={LibraryIcon} size={24} />}
+                  {widget.type === 'gallery' && <HugeiconsIcon icon={Image01Icon} size={24} />}
                   {widget.type === 'heading' && <div className="font-bold">T</div>}
-                  {widget.type === 'map' && <ViewIcon size={24} />}
+                  {widget.type === 'map' && <HugeiconsIcon icon={ViewIcon} size={24} />}
                 </div>
 
                 <div className="flex-1 min-w-0">
@@ -143,7 +144,7 @@ export default function WidgetsPage() {
 
                 <div className="flex items-center gap-2">
                   <Button variant="ghost" size="icon" className="text-muted-foreground">
-                    <PencilEdit01Icon size={18} />
+                    <HugeiconsIcon icon={PencilEdit01Icon} size={18} />
                   </Button>
                   {widget.type !== 'profile' && (
                     <Button 
@@ -152,7 +153,7 @@ export default function WidgetsPage() {
                       className="text-destructive hover:bg-destructive/10"
                       onClick={() => deleteWidget(widget.id)}
                     >
-                      <Delete02Icon size={18} />
+                      <HugeiconsIcon icon={Delete02Icon} size={18} />
                     </Button>
                   )}
                 </div>

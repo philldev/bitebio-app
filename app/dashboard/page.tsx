@@ -3,13 +3,14 @@
 import React from "react";
 import { useAuth } from "@/lib/auth-context";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { HugeiconsIcon } from "@hugeicons/react";
 import { 
   ViewIcon, 
   CursorIcon, 
   Share01Icon,
   ArrowRight01Icon,
-  Plus03Icon
-} from "@hugeicons/react";
+  PlusSignIcon
+} from "@hugeicons/core-free-icons";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -29,7 +30,7 @@ export default function DashboardPage() {
         <Card className="border-none shadow-sm bg-card">
           <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
             <CardTitle className="text-sm font-medium">Total Views</CardTitle>
-            <ViewIcon size={20} className="text-muted-foreground" />
+            <HugeiconsIcon icon={ViewIcon} size={20} className="text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">1,284</div>
@@ -39,7 +40,7 @@ export default function DashboardPage() {
         <Card className="border-none shadow-sm bg-card">
           <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
             <CardTitle className="text-sm font-medium">Total Clicks</CardTitle>
-            <CursorIcon size={20} className="text-muted-foreground" />
+            <HugeiconsIcon icon={CursorIcon} size={20} className="text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">432</div>
@@ -49,7 +50,7 @@ export default function DashboardPage() {
         <Card className="border-none shadow-sm bg-card">
           <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
             <CardTitle className="text-sm font-medium">Click-through Rate</CardTitle>
-            <Share01Icon size={20} className="text-muted-foreground" />
+            <HugeiconsIcon icon={Share01Icon} size={20} className="text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">33.6%</div>
@@ -68,19 +69,19 @@ export default function DashboardPage() {
             <Button variant="outline" className="justify-between h-12" asChild>
               <Link href="/dashboard/profile">
                 <span className="flex items-center gap-2">Update Profile Info</span>
-                <ArrowRight01Icon size={18} />
+                <HugeiconsIcon icon={ArrowRight01Icon} size={18} />
               </Link>
             </Button>
             <Button variant="outline" className="justify-between h-12" asChild>
               <Link href="/dashboard/widgets">
                 <span className="flex items-center gap-2">Add New Menu Item</span>
-                <Plus03Icon size={18} />
+                <HugeiconsIcon icon={PlusSignIcon} size={18} />
               </Link>
             </Button>
             <Button variant="outline" className="justify-between h-12" asChild>
               <Link href={`/${user?.username}`} target="_blank">
                 <span className="flex items-center gap-2">View My Public Profile</span>
-                <ViewIcon size={18} />
+                <HugeiconsIcon icon={ViewIcon} size={18} />
               </Link>
             </Button>
           </CardContent>

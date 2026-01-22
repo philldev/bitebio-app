@@ -7,7 +7,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Coffee01Icon } from "@hugeicons/react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Coffee01Icon } from "@hugeicons/core-free-icons";
 import Link from "next/link";
 
 export default function LoginPage() {
@@ -35,7 +36,7 @@ export default function LoginPage() {
         <div className="flex justify-center mb-8">
           <Link href="/" className="flex items-center gap-2">
             <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-primary-foreground shadow-lg shadow-primary/20">
-              <Coffee01Icon size={24} variant="rounded" />
+              <HugeiconsIcon icon={Coffee01Icon} size={24} />
             </div>
             <span className="text-2xl font-bold tracking-tight">bitebio</span>
           </Link>

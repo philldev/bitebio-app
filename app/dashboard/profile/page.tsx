@@ -9,7 +9,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { CheckmarkCircle01Icon } from "@hugeicons/react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { CheckmarkCircle01Icon } from "@hugeicons/core-free-icons";
 
 export default function ProfileEditorPage() {
   const { user } = useAuth();
@@ -117,7 +118,7 @@ export default function ProfileEditorPage() {
             <div className="flex items-center gap-2 text-sm text-green-600">
               {saveSuccess && (
                 <>
-                  <CheckmarkCircle01Icon size={18} />
+                  <HugeiconsIcon icon={CheckmarkCircle01Icon} size={18} />
                   Changes saved!
                 </>
               )}

@@ -7,7 +7,7 @@ import { ArrowUpRight01Icon } from "@hugeicons/core-free-icons";
 
 export function LinkWidget({ data }: { data: LinkWidgetData["data"] }) {
   // Dynamically get icon from Hugeicons
-  const IconComponent = data.icon && (Icons as Record<string, React.ElementType>)[data.icon];
+  const IconData = data.icon && (Icons as any)[data.icon];
 
   return (
     <a 
@@ -19,8 +19,8 @@ export function LinkWidget({ data }: { data: LinkWidgetData["data"] }) {
         <Card className="h-full p-5 flex flex-col justify-between hover:bg-muted/50 transition-colors border-none bg-muted/20 shadow-none">
             <div className="flex justify-between items-start">
                 <div className="p-2 bg-background rounded-xl shadow-sm">
-                    {IconComponent ? (
-                        <HugeiconsIcon icon={IconComponent} className="h-6 w-6 text-primary" />
+                    {IconData ? (
+                        <HugeiconsIcon icon={IconData} className="h-6 w-6 text-primary" />
                     ) : (
                         <HugeiconsIcon icon={Icons.Link01Icon} className="h-6 w-6 text-primary" />
                     )}

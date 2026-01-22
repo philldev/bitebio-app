@@ -2,7 +2,8 @@
 
 import { OnboardingStepProps } from "../types";
 import { Button } from "@/components/ui/button";
-import { ArrowRight01Icon, Copy01Icon, CheckmarkCircle02Icon } from "@hugeicons/react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { ArrowRight01Icon, Copy01Icon, CheckmarkCircle02Icon } from "@hugeicons/core-free-icons";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useAuth } from "@/lib/auth-context";
@@ -55,7 +56,7 @@ export function StepSuccess({ data }: OnboardingStepProps) {
     <div className="space-y-8 text-center py-8">
       <div className="flex justify-center">
         <div className="h-24 w-24 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center">
-            <CheckmarkCircle02Icon size={48} className="text-green-600 dark:text-green-400" />
+            <HugeiconsIcon icon={CheckmarkCircle02Icon} size={48} className="text-green-600 dark:text-green-400" />
         </div>
       </div>
 
@@ -69,14 +70,14 @@ export function StepSuccess({ data }: OnboardingStepProps) {
       <div className="bg-muted p-4 rounded-lg flex items-center justify-between max-w-sm mx-auto">
         <code className="text-sm font-mono">{profileUrl}</code>
         <Button size="icon" variant="ghost" onClick={handleCopy}>
-            {copied ? <span className="text-green-500 font-bold text-xs">Copied</span> : <Copy01Icon size={18} />}
+            {copied ? <span className="text-green-500 font-bold text-xs">Copied</span> : <HugeiconsIcon icon={Copy01Icon} size={18} />}
         </Button>
       </div>
 
       <div className="pt-4 space-y-3">
         <Button asChild className="w-full max-w-sm" size="lg">
           <Link href="/dashboard">
-            Go to Dashboard <ArrowRight01Icon size={18} className="ml-2" />
+            Go to Dashboard <HugeiconsIcon icon={ArrowRight01Icon} size={18} className="ml-2" />
           </Link>
         </Button>
         <Button asChild variant="ghost" className="w-full max-w-sm" size="lg">

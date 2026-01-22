@@ -4,16 +4,18 @@ import React, { useEffect } from "react";
 import { useAuth, User } from "@/lib/auth-context";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
+import { HugeiconsIcon } from "@hugeicons/react";
 import { 
-  Coffee01Icon, 
-  DashboardSquare01Icon, 
-  UserCircleIcon, 
-  LayoutTabs01Icon, 
-  Settings02Icon,
-  Logout01Icon,
+    Coffee01Icon,
+    DashboardSquare01Icon,
+    UserCircleIcon, 
+    Layout01Icon, 
+    Settings02Icon,
+    Logout01Icon,
+  
   ViewIcon,
   Menu01Icon
-} from "@hugeicons/react";
+} from "@hugeicons/core-free-icons";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { 
@@ -25,7 +27,7 @@ import {
 const NAV_ITEMS = [
   { label: "Overview", href: "/dashboard", icon: DashboardSquare01Icon },
   { label: "Profile Info", href: "/dashboard/profile", icon: UserCircleIcon },
-  { label: "Widgets", href: "/dashboard/widgets", icon: LayoutTabs01Icon },
+  { label: "Widgets", href: "/dashboard/widgets", icon: Layout01Icon },
   { label: "Settings", href: "/dashboard/settings", icon: Settings02Icon },
 ];
 
@@ -42,7 +44,7 @@ const SidebarContent = ({
     <div className="p-6">
       <Link href="/" className="flex items-center gap-2 mb-8">
         <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-primary-foreground shadow-lg shadow-primary/20">
-          <Coffee01Icon size={18} variant="rounded" />
+          <HugeiconsIcon icon={Coffee01Icon} size={18} />
         </div>
         <span className="text-xl font-bold tracking-tight">bitebio</span>
       </Link>
@@ -62,7 +64,7 @@ const SidebarContent = ({
                   : "text-muted-foreground hover:bg-muted hover:text-foreground"
               )}
             >
-              <Icon size={20} variant={isActive ? "solid" : "rounded"} />
+              <HugeiconsIcon icon={Icon} size={20} />
               {item.label}
             </Link>
           );
@@ -76,14 +78,14 @@ const SidebarContent = ({
         target="_blank"
         className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
       >
-        <ViewIcon size={20} />
+        <HugeiconsIcon icon={ViewIcon} size={20} />
         View Public Profile
       </Link>
       <button
         onClick={logout}
         className="flex items-center gap-3 w-full px-3 py-2 rounded-lg text-sm font-medium text-destructive hover:bg-destructive/10 transition-colors"
       >
-        <Logout01Icon size={20} />
+        <HugeiconsIcon icon={Logout01Icon} size={20} />
         Logout
       </button>
       
@@ -125,14 +127,14 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       <header className="lg:hidden flex items-center justify-between p-4 bg-card border-b border-border sticky top-0 z-40">
         <Link href="/" className="flex items-center gap-2">
           <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-primary-foreground">
-            <Coffee01Icon size={18} variant="rounded" />
+            <HugeiconsIcon icon={Coffee01Icon} size={18} />
           </div>
           <span className="text-lg font-bold">bitebio</span>
         </Link>
         <Sheet>
           <SheetTrigger asChild>
             <Button variant="ghost" size="icon">
-              <Menu01Icon size={24} />
+              <HugeiconsIcon icon={Menu01Icon} size={24} />
             </Button>
           </SheetTrigger>
           <SheetContent side="left" className="p-0 w-72">

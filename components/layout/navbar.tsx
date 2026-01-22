@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
-import { Menu01Icon, Coffee01Icon } from "@hugeicons/react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Menu01Icon, Coffee01Icon } from "@hugeicons/core-free-icons";
 import { useAuth } from "@/lib/auth-context";
 
 export function Navbar() {
@@ -15,7 +16,7 @@ export function Navbar() {
         <div className="flex items-center gap-2">
             <Link href="/" className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-primary-foreground">
-                    <Coffee01Icon size={18} variant="rounded" />
+                    <HugeiconsIcon icon={Coffee01Icon} size={18} />
                 </div>
                 <span className="font-bold text-xl text-primary tracking-tight">bitebio</span>
             </Link>
@@ -52,7 +53,7 @@ export function Navbar() {
             <Sheet>
                 <SheetTrigger asChild>
                     <Button variant="ghost" size="icon" aria-label="Open Menu">
-                        <Menu01Icon size={20} />
+                        <HugeiconsIcon icon={Menu01Icon} size={20} />
                     </Button>
                 </SheetTrigger>
                 <SheetContent side="right">
