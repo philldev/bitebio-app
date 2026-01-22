@@ -3,24 +3,27 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "@/lib/auth-context";
 import { storage } from "@/lib/storage";
-import { Profile, Widget, LinkWidgetData, MenuWidgetData, ProfileWidgetData, HeadingWidgetData, GalleryWidgetData } from "@/types/profile";
-import { Card } from "@/components/ui/card";
+import { Profile, Widget, WidgetSize } from "@/types/profile";
 import { Button } from "@/components/ui/button";
 import { HugeiconsIcon } from "@hugeicons/react";
-import { 
-  PlusSignIcon, 
-  Link01Icon, 
-  LibraryIcon, 
-  Image01Icon,
-  Delete02Icon,
-  PencilEdit01Icon,
-  ArrowUp01Icon,
-  ArrowDown01Icon,
-  UserCircleIcon,
-  ViewIcon
-} from "@hugeicons/core-free-icons";
-import { Badge } from "@/components/ui/badge";
+import { PlusSignIcon } from "@hugeicons/core-free-icons";
 import { WidgetEditorDialog } from "@/components/dashboard/widgets/widget-editor-dialog";
+import { SortableWidgetCard } from "@/components/dashboard/widgets/sortable-widget-card";
+import {
+  DndContext,
+  closestCenter,
+  KeyboardSensor,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  DragEndEvent,
+} from "@dnd-kit/core";
+import {
+  arrayMove,
+  SortableContext,
+  sortableKeyboardCoordinates,
+  rectSortingStrategy,
+} from "@dnd-kit/sortable";
 
 export default function WidgetsPage() {
   const { user } = useAuth();
@@ -29,6 +32,17 @@ export default function WidgetsPage() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [dialogMode, setDialogMode] = useState<"add" | "edit">("add");
   const [editingWidget, setEditingWidget] = useState<Widget | null>(null);
+
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 8,
+      },
+    }),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    })
+  );
 
   useEffect(() => {
     if (user?.username) {
@@ -50,16 +64,22 @@ export default function WidgetsPage() {
     save({ ...profile, widgets: newWidgets });
   };
 
-  const moveWidget = (id: string, direction: 'up' | 'down') => {
+  const handleSizeChange = (id: string, size: WidgetSize) => {
     if (!profile) return;
-    const index = profile.widgets.findIndex(w => w.id === id);
-    if (index === -1) return;
-    
-    const newWidgets = [...profile.widgets];
-    const targetIndex = direction === 'up' ? index - 1 : index + 1;
-    
-    if (targetIndex >= 0 && targetIndex < newWidgets.length) {
-      [newWidgets[index], newWidgets[targetIndex]] = [newWidgets[targetIndex], newWidgets[index]];
+    const newWidgets = profile.widgets.map((w) =>
+      w.id === id ? { ...w, size } : w
+    );
+    save({ ...profile, widgets: newWidgets });
+  };
+
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event;
+
+    if (over && active.id !== over.id && profile) {
+      const oldIndex = profile.widgets.findIndex((w) => w.id === active.id);
+      const newIndex = profile.widgets.findIndex((w) => w.id === over.id);
+
+      const newWidgets = arrayMove(profile.widgets, oldIndex, newIndex);
       save({ ...profile, widgets: newWidgets });
     }
   };
@@ -102,104 +122,41 @@ export default function WidgetsPage() {
 
   return (
     <div className="space-y-8">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Manage Widgets</h1>
           <p className="text-muted-foreground mt-1">
-            Add, remove, and reorder elements on your profile.
+            Drag to reorder and resize your profile elements.
           </p>
         </div>
-        <Button className="gap-2" onClick={handleAddWidget}>
+        <Button className="gap-2 h-11" onClick={handleAddWidget}>
           <HugeiconsIcon icon={PlusSignIcon} size={18} />
           Add Widget
         </Button>
       </div>
 
-      <div className="grid gap-4">
-        {profile.widgets.map((widget, index) => {
-          const isFirst = index === 0;
-          const isLast = index === profile.widgets.length - 1;
-
-          return (
-            <Card key={widget.id} className="border-none shadow-sm bg-card overflow-hidden">
-              <div className="flex items-center p-4 gap-4">
-                <div className="flex flex-col gap-1">
-                  <Button 
-                    variant="ghost" 
-                    size="icon" 
-                    className="h-8 w-8" 
-                    disabled={isFirst}
-                    onClick={() => moveWidget(widget.id, 'up')}
-                  >
-                    <HugeiconsIcon icon={ArrowUp01Icon} size={16} />
-                  </Button>
-                  <Button 
-                    variant="ghost" 
-                    size="icon" 
-                    className="h-8 w-8" 
-                    disabled={isLast}
-                    onClick={() => moveWidget(widget.id, 'down')}
-                  >
-                    <HugeiconsIcon icon={ArrowDown01Icon} size={16} />
-                  </Button>
-                </div>
-
-                <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center text-muted-foreground shrink-0">
-                  {widget.type === 'profile' && <HugeiconsIcon icon={UserCircleIcon} size={24} />}
-                  {widget.type === 'link' && <HugeiconsIcon icon={Link01Icon} size={24} />}
-                  {widget.type === 'menu' && <HugeiconsIcon icon={LibraryIcon} size={24} />}
-                  {widget.type === 'gallery' && <HugeiconsIcon icon={Image01Icon} size={24} />}
-                  {widget.type === 'heading' && <div className="font-bold">T</div>}
-                  {widget.type === 'map' && <HugeiconsIcon icon={ViewIcon} size={24} />}
-                </div>
-
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2">
-                    <h3 className="font-bold truncate">
-                      {widget.type === 'profile' && (widget as ProfileWidgetData).data.name}
-                      {widget.type === 'link' && (widget as LinkWidgetData).data.title}
-                      {widget.type === 'menu' && (widget as MenuWidgetData).data.name}
-                      {widget.type === 'heading' && (widget as HeadingWidgetData).data.title}
-                      {widget.type === 'gallery' && "Image Gallery"}
-                      {widget.type === 'map' && "Location Map"}
-                    </h3>
-                    <Badge variant="secondary" className="capitalize text-[10px] h-5">
-                      {widget.type}
-                    </Badge>
-                  </div>
-                  <p className="text-sm text-muted-foreground truncate">
-                    {widget.type === 'link' && (widget as LinkWidgetData).data.url}
-                    {widget.type === 'menu' && (widget as MenuWidgetData).data.price}
-                    {widget.type === 'profile' && "Global Profile Info"}
-                    {widget.type === 'gallery' && `${(widget as GalleryWidgetData).data.images.length} images`}
-                  </p>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <Button 
-                    variant="ghost" 
-                    size="icon" 
-                    className="text-muted-foreground"
-                    onClick={() => handleEditWidget(widget)}
-                  >
-                    <HugeiconsIcon icon={PencilEdit01Icon} size={18} />
-                  </Button>
-                  {widget.type !== 'profile' && (
-                    <Button 
-                      variant="ghost" 
-                      size="icon" 
-                      className="text-destructive hover:bg-destructive/10"
-                      onClick={() => deleteWidget(widget.id)}
-                    >
-                      <HugeiconsIcon icon={Delete02Icon} size={18} />
-                    </Button>
-                  )}
-                </div>
-              </div>
-            </Card>
-          );
-        })}
-      </div>
+      <DndContext
+        sensors={sensors}
+        collisionDetection={closestCenter}
+        onDragEnd={handleDragEnd}
+      >
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[160px]">
+          <SortableContext 
+            items={profile.widgets.map(w => w.id)} 
+            strategy={rectSortingStrategy}
+          >
+            {profile.widgets.map((widget) => (
+              <SortableWidgetCard
+                key={widget.id}
+                widget={widget}
+                onEdit={handleEditWidget}
+                onDelete={deleteWidget}
+                onSizeChange={handleSizeChange}
+              />
+            ))}
+          </SortableContext>
+        </div>
+      </DndContext>
 
       <WidgetEditorDialog
         isOpen={isDialogOpen}
