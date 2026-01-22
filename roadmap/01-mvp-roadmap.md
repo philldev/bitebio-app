@@ -46,7 +46,15 @@ This roadmap focuses on building the core UI/UX and frontend logic without a bac
 - [x] **Success State**
   - "Your profile is ready!" screen (simulating a completed signup).
 
-## Phase 4: Polish & Refinement
+## Phase 4: Auth & User Management (Mock)
+**Goal:** Build the User Dashboard and dynamic editing capabilities.
+- **Detailed Roadmap:** [Auth & User Mgmt Roadmap](02-auth-user-mgmt-mock.md)
+- [ ] **Auth Context:** Fake login/logout logic.
+- [ ] **Dashboard:** Private CMS to edit profile data.
+- [ ] **CRUD Operations:** Edit Links, Menu, and Gallery.
+- [ ] **Local Persistence:** Save changes to browser storage so they appear on the public profile.
+
+## Phase 5: Polish & Refinement
 **Goal:** Ensure the "Maia" aesthetic and high-quality feel.
 - [ ] **Animations**
   - Add simple entry animations for grid items (fade-in/slide-up).
