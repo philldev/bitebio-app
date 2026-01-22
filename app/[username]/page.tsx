@@ -1,17 +1,32 @@
-import { notFound } from "next/navigation";
-import { MOCK_PROFILES } from "@/lib/mock-data";
+"use client";
+
+import { notFound, useParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import { storage } from "@/lib/storage";
+import { Profile } from "@/types/profile";
 import { ProfileGrid } from "@/components/profile/profile-grid";
 import { WidgetFactory } from "@/components/profile/widget-factory";
 
-interface ProfilePageProps {
-  params: Promise<{
-    username: string;
-  }>;
-}
+export default function ProfilePage() {
+  const params = useParams();
+  const username = params.username as string;
+  const [profile, setProfile] = useState<Profile | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-export default async function ProfilePage({ params }: ProfilePageProps) {
-  const { username } = await params;
-  const profile = MOCK_PROFILES[username];
+  useEffect(() => {
+    const loadedProfile = storage.getProfile(username);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setProfile(loadedProfile);
+    setIsLoading(false);
+  }, [username]);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+      </div>
+    );
+  }
 
   if (!profile) {
     notFound();

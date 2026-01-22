@@ -1,3 +1,4 @@
+import React from "react";
 import { LinkWidgetData } from "@/types/profile";
 import { Card } from "@/components/ui/card";
 import { HugeiconsIcon } from "@hugeicons/react";
@@ -6,7 +7,7 @@ import { ArrowUpRight01Icon } from "@hugeicons/core-free-icons";
 
 export function LinkWidget({ data }: { data: LinkWidgetData["data"] }) {
   // Dynamically get icon from Hugeicons
-  const IconComponent = data.icon && (Icons as any)[data.icon];
+  const IconComponent = data.icon && (Icons as Record<string, React.ElementType>)[data.icon];
 
   return (
     <a 

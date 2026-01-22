@@ -13,7 +13,7 @@ export default function LandingPage() {
         <div className="container px-4 md:px-6 mx-auto text-center">
           <div className="flex flex-col items-center space-y-4">
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-primary to-orange-600">
-              Your Cafe's Digital Home
+              Your Cafe&apos;s Digital Home
             </h1>
             <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
               Showcase your menu, links, and vibe in one beautiful link-in-bio.

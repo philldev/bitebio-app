@@ -13,10 +13,10 @@ export default function AboutPage() {
           <p>
             BiteBio was born from a simple observation: food businesses need more than just a static link. 
             They need a way to express their visual identity, showcase their menu, and guide customers 
-            to the right actions—whether that's booking a table, ordering delivery, or following on social media.
+            to the right actions&mdash;whether that&apos;s booking a table, ordering delivery, or following on social media.
           </p>
           <p>
-            Inspired by the clean, modular design of modern "link-in-bio" tools, we built BiteBio 
+            Inspired by the clean, modular design of modern &quot;link-in-bio&quot; tools, we built BiteBio 
             specifically for the hospitality industry. We believe that your digital presence should be 
             as inviting as your physical space.
           </p>
